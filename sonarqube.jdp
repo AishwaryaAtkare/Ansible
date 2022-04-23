@@ -8,8 +8,9 @@ pipeline {
         }
         stage('build') { 
             steps {
-               sh 'mvn clean package'
-                    }
+              git 'https://github.com/AishwaryaAtkare/studentapp-ui.git'  
+            }
         }
+        
     }
 }
