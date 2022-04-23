@@ -1,0 +1,8 @@
+---
+ -name: playbook for debug
+  host: all 
+  tasks:
+    - name: print hellow world
+      debug:
+        msg: "hello world welcome to cloudblitz"
+...
