@@ -1,8 +1,8 @@
 ---
-- name: playbook for debug
-  host: all 
+- name: My First Playbook
+  hosts: all
   tasks:
-  - name: print hellow world
-    debug:
-       msg: "hello world welcome to cloudblitz"
+  - name: play for debug
+    debug: 
+       msg: "visit tht google.com"
 ...
