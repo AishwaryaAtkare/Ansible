@@ -1,26 +1,12 @@
-- name: playbook for debug
-  hosts: all
-  vars_files:
-   - ./varFile
-  vars_prompt:
-   - name: URL
-     prompt: "Please enter your website"
-     private: false
-  vars:
-    URL: "www.cloudblitz.in"
-  gather_facts: True
+- hosts: web_servers
+
   tasks:
-    - name: print Hello India
-      debug:
-        msg: "Please visit {{ URL }}"
-    - name: print cloudblitz
-      debug:
-        msg: "Please visit {{ URL }}"
-      vars:
-        URL: "local.cloudblitz.in"
-    - name: print OS
-      debug:
-        msg: "Please visit {{ ansible_distribution }}"
-    - name: print IP
-      debug:
-        msg: "Please visit {{ ansible_default_ipv4.address }}"
+
+     - name: Run a shell command and register its output as a variable
+       ansible.builtin.shell: /usr/bin/foo
+       register: foo_result
+       ignore_errors: true
+
+     - name: Run a shell command using output of the previous task
+       ansible.builtin.shell: /usr/bin/bar
+       when: foo_result.rc == 5
